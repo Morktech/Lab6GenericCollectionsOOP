@@ -4,37 +4,40 @@
     {
         static void Main(string[] args)
         {
+
             Stack<Employee> employees = new Stack<Employee>();
 
+            // Five employee objects
             Employee employee1
                 = new Employee(101, "Max", "Male", 33000m);
             Employee employee2
                 = new Employee(102, "Fanny", "Female", 38000m);
             Employee employee3
-                = new Employee(103, "Linnea", "Female", 60000m);
+                = new Employee(103, "Linnea", "Female", 45000m);
             Employee employee4
                 = new Employee(104, "Tim", "Male", 39000m);
             Employee employee5
-                = new Employee(105, "Sara", "Female", 45000m);
+                = new Employee(105, "Sara", "Female", 40000m);
 
+            // Pushes and stacks the employees 1-5
             employees.Push(employee1);
             employees.Push(employee2);
             employees.Push(employee3);
             employees.Push(employee4);
             employees.Push(employee5);
 
-            // Prints all elemnts in the Employee Stack
+            // Prints every employee in the Stack
+            // Counts the total amount of objects left in the stack,
+            // each iteration.
             foreach (Employee employee in employees)
             {
-
                 Console.WriteLine($"{employee.Id}, {employee.Name}, {employee.Gender}, {employee.Salary}");
                 Console.WriteLine($"Employees in stack: {employees.Count}");
-               
             }
 
             Console.WriteLine("Using Pop Method");
 
-            // Temporary stack to hold poped objects
+            // Temporary stack to hold the Pop:ed objects
             Stack<Employee> tempStack = new Stack<Employee>();
 
 
@@ -50,7 +53,7 @@
                 tempStack.Push(employee);
             }
 
-            // While-loop to restor the original employee Stack
+            // Restores the original employee Stack
             while (tempStack.Count > 0)
             {
                 Employee employee = tempStack.Pop();
@@ -60,8 +63,8 @@
 
             Console.WriteLine("Using Peek!");
 
-            // For-loop uses the method peek() for two iterations
-            // Prints the employee data.
+            // Uses the method peek() for two iterations,
+            // and prints the employee data.
             for (int i = 0; i < 2; i++)
             {
                 Employee employee = employees.Peek();
@@ -71,6 +74,7 @@
             }
             
             // Check if employee3 exists or not by using the method Contains()
+            // Returning a boolean value true/false if the element exists.
             if (employees.Contains(employee3))
             {
                 Console.WriteLine("Employee 3 is in the stack");
@@ -80,7 +84,7 @@
                 Console.WriteLine("Employee 3 is not in the stack");
             }
 
-            // List<T> to hold all the employee objects
+            // A List to hold all employee objects
             List<Employee> employeesList = new List<Employee>();
 
             employeesList.Add(employee1);
@@ -101,7 +105,7 @@
             }
 
 
-            // Finds the first employee with the gender "Male" using a lambda expression
+            // Finds the first employee with the Gender "Male" using a lambda expression
             Employee? firstMale = employeesList.Find(e => e.Gender == "Male");
 
             if (firstMale != null)
